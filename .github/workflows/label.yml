@@ -20,9 +20,28 @@ jobs:
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
         script: |
+          # Get PR description
+          var body = context.payload.pull_request.body
+
+          if (body) {
+            var inDevelopment = body.contains("In Development")
+          }
+
+          # Add label to new general PRs
           github.issues.addLabels({
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
             labels: ["ready for review"] 
           })
+
+          # Add label for in-development PRs
+          if (inDevelopment) {
+            github.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ["needs input"] 
+            })
+          }
+         

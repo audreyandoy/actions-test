@@ -38,7 +38,7 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 labels: [this.label] 
-              });
+              })
             }
 
             addToProjectBoard() {
@@ -46,9 +46,9 @@ jobs:
                 column_id: this.column_id,
                 content_type: 'PullRequest',
                 content_id: context.payload.pull_request.id
-              });
+              })
             }
-          } 
+          }
           
           if(msg) {
             const inDevelopment = msg.includes("In Development");

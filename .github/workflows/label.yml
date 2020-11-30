@@ -45,7 +45,7 @@ jobs:
             // Create card for PR in project board
             github.projects.createCard({
               column_id: 11886851,
-              content_type: 'PullRequest'
+              content_type: 'PullRequest',
               content_id: context.payload.pull_request.id
             })
           } 

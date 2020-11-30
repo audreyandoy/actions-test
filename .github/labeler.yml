@@ -1,2 +1,2 @@
-ready_for_review:
-  - any: ['./*']
+ready for review:
+  - "*"

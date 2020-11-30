@@ -22,9 +22,9 @@ jobs:
         script: |
           // Get PR description
           const msg = context.payload.pull_request.title;
-          console.log(context.payload.pull_request[17])
-          console.log(context.payload.pull_request[16])
-          console.log(context.payload.pull_request[15])
+          console.log(context.payload.pull_request[17]);
+          console.log(context.payload.pull_request[16]);
+          console.log(context.payload.pull_request[15]);
           
           class AdaPullRequest 
             constructor(label, column_id) {
@@ -38,7 +38,7 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 labels: [this.label] 
-              })
+              });
             }
 
             addToProjectBoard() {
@@ -46,9 +46,9 @@ jobs:
                 column_id: this.column_id,
                 content_type: 'PullRequest',
                 content_id: context.payload.pull_request.id
-              })
+              });
             }
-          }
+          } 
           
           if(msg) {
             const inDevelopment = msg.includes("In Development");

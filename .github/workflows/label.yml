@@ -6,10 +6,7 @@
 # https://github.com/actions/labeler
 
 name: Test-Labeler
-on: 
-  pull_request:
-    branches: 
-      - main
+on: [pull_request_target]
 
 jobs:
   label:

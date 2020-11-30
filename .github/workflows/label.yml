@@ -22,8 +22,9 @@ jobs:
         script: |
           // Get PR description
           const msg = context.payload.pull_request.title;
+          console.log(context.payload.pull_request[17])
       
-          class AdaPullRequest {
+          class AdaPullRequest {d
             constructor(label, column_id) {
               this.label = label;
               this.column_id = column_id;

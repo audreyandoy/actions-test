@@ -20,7 +20,7 @@ jobs:
       with:
         github-token: "${{ secrets.GITHUB_TOKEN }}"
         script: |
-          // Get PR description
+           // Get PR description
           const msg = context.payload.pull_request.title;
 
           if(msg) {
@@ -43,6 +43,3 @@ jobs:
               })
             }
           } 
-
-
-          

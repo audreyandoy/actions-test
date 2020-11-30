@@ -21,7 +21,7 @@ jobs:
         github-token: "${{ secrets.GITHUB_TOKEN }}"
         script: |
           // Get PR description
-          const msg = context.client_payload.pull_request_target.body;
+          const msg = context.client_payload.pull_request_target.title;
 
           if(msg) {
             const inDevelopment = msg.includes("In Development");

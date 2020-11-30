@@ -5,8 +5,11 @@
 # file with configuration.  For more information, see:
 # https://github.com/actions/labeler
 
-name: Labeler
-on: pull_request
+name: Test-Labeler
+on: 
+  pull_request:
+    branches: 
+      - master
 
 jobs:
   label:

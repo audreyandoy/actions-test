@@ -7,3 +7,9 @@
 # changed to pull_request_target ?
 # changed to pull request [opened]
 # using github-scripts instead
+# YESSSSS THIS WORKED ^^^^^
+
+
+# Wins
+# Automated project boards so that PRs will go into their respective columns
+# testing in development label

@@ -22,9 +22,9 @@ jobs:
         script: |
           // Get PR description
           const msg = context.payload.pull_request.title;
-          console.log(context.payload.pull_request[17]);
-          console.log(context.payload.pull_request[16]);
-          console.log(context.payload.pull_request[15]);
+          console.log(Object.keys(context.payload.pull_request)[17]);
+          console.log(Object.keys(context.payload.pull_request)[16]);
+          console.log(Object.keys(context.payload.pull_request)[15]);
           
           class AdaPullRequest 
             constructor(label, column_id) {

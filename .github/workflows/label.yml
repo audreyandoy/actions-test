@@ -7,7 +7,7 @@
 
 name: Test-Labeler
 on: 
-  pull_request:
+  pull_request_target:
     types: [opened]
 
 jobs:
@@ -16,7 +16,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/labeler@v3
+    - uses: actions/github-script@v3
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
-        configuration-path: ./github/labeler.yml
+        script: |
+          github.issues.addLabels({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            labels: ["ready for review"] 
+          })

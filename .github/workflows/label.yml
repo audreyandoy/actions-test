@@ -21,7 +21,6 @@ jobs:
         github-token: "${{ secrets.GITHUB_TOKEN }}"
         script: |
           // Get PR description
-          const msg = context.payload.pull_request.title;
           console.log(context.payload.pull_request);
           console.log(Object.keys(context.payload.pull_request)[5]);
 
@@ -50,17 +49,18 @@ jobs:
           }
           
           if(msg) {
-            let inDevelopment = msg.includes("In Development");
+            const msg = context.payload.pull_request.title;
+            const inDevelopment = msg.includes("In Development");
             
             if(inDevelopment) {
-              const developmentPullRequest = new AdaPullRequest("needs input", 11886817)
-              developmentPullRequest.addLabel;
-              developmentPullRequest.addToProjectBoard;
+              const developmentPullRequest = new AdaPullRequest("needs input", 11889953)
+              developmentPullRequest.addLabel();
+              developmentPullRequest.addToProjectBoard();
 
             } else {
               const generalPullRequest = new AdaPullRequest("ready for review", 11886851)
-              generalPullRequest.addLabel;
-              generalPullRequest.addToProjectBoard;
+              generalPullRequest.addLabel();
+              generalPullRequest.addToProjectBoard();
             }
       
           } 

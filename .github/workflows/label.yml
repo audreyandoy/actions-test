@@ -9,7 +9,7 @@ name: Test-Labeler
 on: 
   pull_request:
     branches: 
-      - master
+      - main
 
 jobs:
   label:

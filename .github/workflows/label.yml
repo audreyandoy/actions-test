@@ -1,11 +1,4 @@
-# This workflow will triage pull requests and apply a label based on the
-# paths that are modified in the pull request.
-#
-# To use this workflow, you will need to set up a .github/labeler.yml
-# file with configuration.  For more information, see:
-# https://github.com/actions/labeler
-
-name: Test-Labeler
+name: Labeler
 on: 
   pull_request_target:
     types: [opened]
@@ -22,44 +15,39 @@ jobs:
         script: |
           // Get PR description
           const msg = context.payload.pull_request.title;
-          console.log(Object.keys(context.payload.pull_request)[17]);
-          console.log(Object.keys(context.payload.pull_request)[16]);
-          console.log(Object.keys(context.payload.pull_request)[15]);
-          
+           
           class AdaPullRequest {
             constructor(label, column_id) {
               this.label = label;
               this.column_id = column_id;
             }
-
             addLabel() {
               github.issues.addLabels({
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 labels: [this.label] 
-              });
+              })
             }
-
             addToProjectBoard() {
               github.projects.createCard({
                 column_id: this.column_id,
                 content_type: 'PullRequest',
                 content_id: context.payload.pull_request.id
-              });
+              })
             }
-          } 
+          }
           
           if(msg) {
-            const inDevelopment = msg.includes("In Development");
+            const inDevelopment = msg.includes("WIP");
             
             if(inDevelopment) {
-              const developmentPullRequest = new AdaPullRequest("needs input", 11889953)
-              developmentPullRequest.addLabel();
+              const developmentPullRequest = new AdaPullRequest("Needs Input", 11900772)
+            
               developmentPullRequest.addToProjectBoard();
             } else {
-              const generalPullRequest = new AdaPullRequest("ready for review", 11886851)
-              generalPullRequest.addLabel();
+              const generalPullRequest = new AdaPullRequest("Ready for Review #1", 11900773)
+              
               generalPullRequest.addToProjectBoard();
             }
           } 
